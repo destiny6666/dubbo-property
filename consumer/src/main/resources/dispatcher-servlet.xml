@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <!--启用spring的一些注解比如@Autowired、@Controller等(因为配置了自动扫描包含激活spring配置，所以可以不用配置，但是以防万一) -->
+    <context:annotation-config />
+    <!-- 自动扫描装配 -->
+    <context:component-scan base-package="com.dubbo" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/" />
+        <property name="suffix" value=".jsp" />
+        <property name="contentType" value="text/html;charset=utf-8" />
+    </bean>
+    <!-- 配置注解驱动@RequestMapping等 可以将request参数与绑定到controller参数上 -->
+    <mvc:annotation-driven />
+</beans>
